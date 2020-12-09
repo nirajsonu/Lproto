@@ -1,27 +1,31 @@
 package com.example.splashscreen;
-
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import com.google.android.material.slider.Slider;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 public class screen1fragment extends Fragment {
     private View view;
     private ImageView navButton;
     private ImageView imageView;
+    private Animation animation;
+    private ImageView email;
+    private HorizontalScrollView horizontal;
+    @Override
+    public void setRetainInstance(boolean retain) {
+        super.setRetainInstance(retain);
+    }
+
     public screen1fragment() {
 
     }
@@ -39,6 +43,8 @@ public class screen1fragment extends Fragment {
     }
     private void setViews(){
         imageView=view.findViewById(R.id.geological);
+        horizontal=view.findViewById(R.id.horizontal);
+        email=view.findViewById(R.id.email);
     }
     private void setListeners(){
         navButton.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +56,8 @@ public class screen1fragment extends Fragment {
        imageView.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
+               animation= AnimationUtils.loadAnimation(getContext(),R.anim.bounce);
+               imageView.startAnimation(animation);
                FragmentManager fragmentManager=(getActivity().getSupportFragmentManager());
                Fragment Scrappy_box_Fragment=new Scrappy_box_Fragment();
                fragmentManager.beginTransaction()

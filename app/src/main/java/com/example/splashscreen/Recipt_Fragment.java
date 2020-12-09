@@ -1,5 +1,6 @@
 package com.example.splashscreen;
 
+import android.animation.Animator;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.airbnb.lottie.LottieAnimationView;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,7 +30,7 @@ public class Recipt_Fragment extends Fragment {
     private String mParam2;
     private Button mPayButton;
     private View view;
-
+    private com.airbnb.lottie.LottieAnimationView LottieAnimationView;
     public Recipt_Fragment() {
         // Required empty public constructor
     }
@@ -63,6 +66,28 @@ public class Recipt_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view=inflater.inflate(R.layout.fragment_recipt__fragmnet, container, false);
+        LottieAnimationView=view.findViewById(R.id.animationView);
+        LottieAnimationView.addAnimatorListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animator) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animator) {
+
+            }
+        });
         return view;
     }
 }
