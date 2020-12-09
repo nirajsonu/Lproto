@@ -19,18 +19,11 @@ import android.widget.TextView;
 import com.google.android.material.slider.Slider;
 
 public class screen1fragment extends Fragment {
-    private Slider mWeightSlider;
-    private Slider mSizeSlider;
-    private TextView mWeightTextView;
-    private TextView mSizeTextView;
-    private Button mSendButton;
-    private String mWeightFormattedValue="0.0";
-    private String mSizeFormattedValue="0.0";
     private View view;
     private ImageView navButton;
-
+    private ImageView imageView;
     public screen1fragment() {
-        // Required empty public constructor
+
     }
 
     @Override
@@ -45,55 +38,27 @@ public class screen1fragment extends Fragment {
         return view;
     }
     private void setViews(){
-        mWeightSlider=view.findViewById(R.id.weight_slider);
-        mSizeSlider=view.findViewById(R.id.size_slider);
-        mWeightTextView=view.findViewById(R.id.weight_text);
-        mSizeTextView=view.findViewById(R.id.size_text);
-        mSendButton=view.findViewById(R.id.send_button);
+        imageView=view.findViewById(R.id.geological);
     }
     private void setListeners(){
-        mWeightSlider.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(
-                    Slider slider, float value, boolean fromUser) {
-                mWeightFormattedValue = String.format("%.02f",value) ;
-                mWeightTextView.setText(mWeightFormattedValue + " Kg");
-            }
-        });
-        mSizeSlider.addOnChangeListener(new Slider.OnChangeListener() {
-            @Override
-            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
-                mSizeFormattedValue = String.format("%.02f",value) ;
-                mSizeTextView.setText(mSizeFormattedValue+" Feet");
-            }
-        });
-        mSendButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-//                Intent i = new Intent(getContext(),SendActivity.class);
-//                i.putExtra("weight",mWeightFormattedValue);
-//                i.putExtra("size",mSizeFormattedValue);
-//                startActivity(i);
-                FragmentManager fragmentManager = (getActivity()).getSupportFragmentManager();
-                Fragment sendFragment = new SendFragment();
-                Bundle data = new Bundle();
-                data.putString("weight", mWeightFormattedValue);
-                data.putString("size", mSizeFormattedValue);
-                sendFragment.setArguments(data);
-                fragmentManager.beginTransaction()
-                        .setCustomAnimations(R.anim.slide_in_up, android.R.anim.fade_out, android.R.anim.fade_in, R.anim.slide_out_down)
-                        .replace(R.id.screen, sendFragment, "find this fragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
         navButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ((demo_Drawer_Activity)getActivity()).mDrawerlayout.openDrawer(Gravity.LEFT);
             }
         });
-
+       imageView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               FragmentManager fragmentManager=(getActivity().getSupportFragmentManager());
+               Fragment Scrappy_box_Fragment=new Scrappy_box_Fragment();
+               fragmentManager.beginTransaction()
+                       .setCustomAnimations(R.anim.slide_in_up, android.R.anim.fade_out, android.R.anim.fade_in, R.anim.slide_out_down)
+                       .replace(R.id.screen, Scrappy_box_Fragment, "find this fragment")
+                       .addToBackStack(null)
+                       .commit();
+           }
+       });
     }
 
 }

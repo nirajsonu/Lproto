@@ -3,21 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/Lproto_red"
     android:orientation="vertical"
     tools:context=".LoginActivity">
-
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Register"
+    android:layout_gravity="center"
+    android:layout_marginTop="40dp"
+    android:textColor="#ffffff"
+    android:textSize="30sp"
+    >
+</TextView>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="50dp"
+        android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginVertical="10dp"
-            android:src="@drawable/logo" />
+        android:orientation="vertical"
+        android:padding="40dp"
+        android:layout_marginTop="130dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginLeft="40dp"
+        android:background="@drawable/rounded_corner_all">
 
         <EditText
             android:id="@+id/email"
@@ -42,26 +50,21 @@
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold" />
-
-        <LinearLayout
+        <EditText
+            android:id="@+id/upload"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:weightSum="2">
-
-            <Spinner
-                android:layout_width="match_parent"
-                android:layout_marginTop="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="Register"
-                android:id="@+id/spinner"
-                android:textColor="@color/black"
-                android:textStyle="bold" />
-        </LinearLayout>
+            android:backgroundTint="#F77979"
+            android:hint="Upload"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Sector"
             android:textColor="@color/black"
             >
@@ -78,27 +81,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Private"
+                android:theme="@style/RadioButtonStyle"
                 >
             </RadioButton>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:theme="@style/RadioButtonStyle"
                 android:text="Buiness"
                 >
             </RadioButton>
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:theme="@style/RadioButtonStyle"
                 android:text="Both"
                 >
             </RadioButton>
         </RadioGroup>
         <Button
-            android:id="@+id/SignButton"
+            android:id="@+id/Register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginVertical="10dp"
+            android:theme="@style/RadioButtonStyle"
             android:backgroundTint="@color/Lproto_red"
-            android:text="Sign up" />
+            android:text="Register" />
     </LinearLayout>
 </LinearLayout>
