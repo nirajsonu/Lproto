@@ -28,7 +28,10 @@ public class screen1fragment extends Fragment {
     private String mSizeFormattedValue="0.0";
     private View view;
     private ImageView navButton;
-
+    private ImageView imageView;
+    private TextView weightText;
+    private TextView size;
+    private TextView weight;
     public screen1fragment() {
         // Required empty public constructor
     }
@@ -47,15 +50,18 @@ public class screen1fragment extends Fragment {
     private void setViews(){
         mWeightSlider=view.findViewById(R.id.weight_slider);
         mSizeSlider=view.findViewById(R.id.size_slider);
-        mWeightTextView=view.findViewById(R.id.weight_text);
         mSizeTextView=view.findViewById(R.id.size_text);
         mSendButton=view.findViewById(R.id.send_button);
+        imageView=view.findViewById(R.id.geological);
+        weightText=view.findViewById(R.id.weight_text);
+        size=view.findViewById(R.id.size);
+        weight=view.findViewById(R.id.weight);
     }
     private void setListeners(){
         mWeightSlider.addOnChangeListener(new Slider.OnChangeListener() {
             @Override
             public void onValueChange(
-                    Slider slider, float value, boolean fromUser) {
+                    @NonNull  Slider slider, float value, boolean fromUser) {
                 mWeightFormattedValue = String.format("%.02f",value) ;
                 mWeightTextView.setText(mWeightFormattedValue + " Kg");
             }
@@ -65,6 +71,12 @@ public class screen1fragment extends Fragment {
             public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
                 mSizeFormattedValue = String.format("%.02f",value) ;
                 mSizeTextView.setText(mSizeFormattedValue+" Feet");
+            }
+        });
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                weightText.setVisibility(View.VISIBLE);
             }
         });
         mSendButton.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +105,19 @@ public class screen1fragment extends Fragment {
                 ((demo_Drawer_Activity)getActivity()).mDrawerlayout.openDrawer(Gravity.LEFT);
             }
         });
-
+       imageView.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               mWeightSlider.setVisibility(View.VISIBLE);
+               mSizeSlider.setVisibility(View.VISIBLE);
+               mSizeTextView.setVisibility(View.VISIBLE);
+               mSizeSlider.setVisibility(View.VISIBLE);
+               mSendButton.setVisibility(View.VISIBLE);
+               weightText.setVisibility(View.VISIBLE);
+               size.setVisibility(View.VISIBLE);
+               weight.setVisibility(View.VISIBLE);
+           }
+       });
     }
 
 }
