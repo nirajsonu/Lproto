@@ -1,32 +1,24 @@
 package com.example.splashscreen;
 
+import android.media.Image;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.slider.Slider;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Scrappy_box_Fragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Scrappy_box_Fragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-    private String mParam1;
-    private String mParam2;
     private View view;
     private Slider mWeightSlider;
     private Slider mSizeSlider;
@@ -37,26 +29,16 @@ public class Scrappy_box_Fragment extends Fragment {
     private TextView weight;
     private String mWeightFormattedValue="0.0";
     private String mSizeFormattedValue="0.0";
+    private ImageView mSelectedStuff;
 
     public Scrappy_box_Fragment() {
 
-    }
-    public static Scrappy_box_Fragment newInstance(String param1, String param2) {
-        Scrappy_box_Fragment fragment = new Scrappy_box_Fragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        changeNavbutton();
     }
 
     @Override
@@ -67,6 +49,17 @@ public class Scrappy_box_Fragment extends Fragment {
         setListeners();
         return view;
     }
+    private void changeNavbutton(){
+        ((demo_Drawer_Activity)getActivity()).mNavButton.setImageResource(R.drawable.left_arrow);
+        ((demo_Drawer_Activity)getActivity()).mNavButton.setOnClickListener(null);
+        ((demo_Drawer_Activity)getActivity()).mNavButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
+
+    }
     private void setViews() {
         size=view.findViewById(R.id.size);
         weight=view.findViewById(R.id.weight);
@@ -75,7 +68,11 @@ public class Scrappy_box_Fragment extends Fragment {
         mWeightTextView=view.findViewById(R.id.weight_text);
         mSizeTextView=view.findViewById(R.id.size_text);
         mSendButton=view.findViewById(R.id.send_button);
+        mSelectedStuff=view.findViewById(R.id.selected_item);
+        mSelectedStuff.setImageResource(getArguments().getInt("selectedItem"));
+
     }
+
     private void setListeners() { mWeightSlider.addOnChangeListener(new Slider.OnChangeListener() {
         @Override
         public void onValueChange(
