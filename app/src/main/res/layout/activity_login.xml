@@ -14,10 +14,10 @@
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="200dp"
-            android:layout_height="200dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             android:layout_marginVertical="10dp"
-            android:src="@drawable/logo" />
+            android:src="@drawable/logo_transparent" />
         <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
