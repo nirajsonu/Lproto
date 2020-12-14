@@ -22,7 +22,7 @@
         android:textStyle="bold"
         tools:ignore="RtlCompat"
         android:paddingBottom="10dp"/>
-    <androidx.viewpager.widget.ViewPager
+    <com.example.splashscreen.VerticalViewPager
         android:layout_marginHorizontal="40dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
