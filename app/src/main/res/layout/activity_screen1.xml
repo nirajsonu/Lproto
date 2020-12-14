@@ -7,8 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:weightSum="5"
-    android:background="@color/Lproto_red"
-    tools:context=".MainActivity">
+    android:background="@color/Lproto_red">
 
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +22,7 @@
         android:textStyle="bold"
         tools:ignore="RtlCompat"
         android:paddingBottom="10dp"/>
-    <androidx.viewpager.widget.ViewPager
+    <com.example.splashscreen.VerticalViewPager
         android:layout_marginHorizontal="40dp"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -47,6 +46,7 @@
         app:tabIndicatorHeight="0dp"
         app:tabPaddingStart="10dp"
         app:tabPaddingEnd="10dp"
+        app:tabRippleColor="@null"
         />
 
 

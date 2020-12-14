@@ -28,7 +28,7 @@ public class screen1fragment extends Fragment {
     private Animation animation;
     private ImageView email;
     private HorizontalScrollView horizontal;
-    private ViewPager mPager;
+    private VerticalViewPager mPager;
     private PagerAdapter pagerAdapter;
     @Override
     public void setRetainInstance(boolean retain) {
@@ -42,8 +42,6 @@ public class screen1fragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
@@ -53,9 +51,8 @@ public class screen1fragment extends Fragment {
         navButton = ((demo_Drawer_Activity)getActivity()).mNavButton;
         navButton.setImageResource(R.drawable.menu);
         view = inflater.inflate(R.layout.activity_screen1, container, false);
-        mPager = (ViewPager) view.findViewById(R.id.pager);
+        mPager = (VerticalViewPager) view.findViewById(R.id.pager);
         pagerAdapter = new ScreenSlidePagerAdapter(getChildFragmentManager());
-        mPager.setPageTransformer(true, new ZoomOutPageTransformer());
         mPager.setAdapter(pagerAdapter);
         TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout);
         tabLayout.setupWithViewPager(mPager, true);
@@ -66,27 +63,22 @@ public class screen1fragment extends Fragment {
     private void setViews(){
 
     }
-    private void setListeners(){
+    private void setListeners() {
         navButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((demo_Drawer_Activity)getActivity()).mDrawerlayout.openDrawer(Gravity.LEFT);
+                ((demo_Drawer_Activity) getActivity()).mDrawerlayout.openDrawer(Gravity.LEFT);
             }
         });
-//       imageView.setOnClickListener(new View.OnClickListener() {
-//           @Override
-//           public void onClick(View view) {
-//               animation= AnimationUtils.loadAnimation(getContext(),R.anim.bounce);
-//               imageView.startAnimation(animation);
-//               FragmentManager fragmentManager=(getActivity().getSupportFragmentManager());
-//               Fragment Scrappy_box_Fragment=new Scrappy_box_Fragment();
-//               fragmentManager.beginTransaction()
-//                       .setCustomAnimations(R.anim.slide_in_up, android.R.anim.fade_out, android.R.anim.fade_in, R.anim.slide_out_down)
-//                       .replace(R.id.screen, Scrappy_box_Fragment, "find this fragment")
-//                       .addToBackStack(null)
-//                       .commit();
-//           }
-//       });
+    }
+        public void fragmentBackpress(Bundle data){
+            FragmentManager fragmentManager=(getActivity().getSupportFragmentManager());
+            Fragment Scrappy_box_Fragment=new Scrappy_box_Fragment();
+            fragmentManager.beginTransaction()
+                    .setCustomAnimations(R.anim.slide_in_up, android.R.anim.fade_out, android.R.anim.fade_in, R.anim.slide_out_down)
+                    .replace(R.id.screen, Scrappy_box_Fragment, "find this fragment")
+                    .addToBackStack(null)
+                    .commit();
     }
 
 }
