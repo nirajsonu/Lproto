@@ -10,7 +10,6 @@
     tools:context=".MainActivity"
     android:gravity="center"
     android:background="@color/Lproto_red">
-
     <ImageView
         android:layout_width="200dp"
         android:layout_height="200dp"
